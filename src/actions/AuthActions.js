@@ -41,6 +41,7 @@ const loginUserSuccess = (dispatch, user) => {
       payload: user
   });
   Actions.core();
+  Actions.welcomePage();
 };
 
 const loginUserFail = (dispatch) => {

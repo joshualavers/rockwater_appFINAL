@@ -4,6 +4,7 @@ import firebase from 'firebase';
 // import { connect } from 'react-redux';
 import LoginForm from './components/LoginForm';
 import WelcomePage from './components/WelcomePage';
+import ProductPage from './components/ProductPage';
 // import { logoutUserSuccess } from './actions';
 // import EmployeeList from './components/EmployeeList';
 // import EmployeeCreate from './components/EmployeeCreate';
@@ -22,8 +23,18 @@ const RouterComponent = () => {
             title="Welcome"
             titleStyle={{ alignSelf: 'center' }}
             rightTitle="Log Out"
-            onRight={() => { firebase.auth().signOut(); Actions.auth(); Actions.login(); }}
+            onRight={() => {
+              firebase.auth().signOut();
+              Actions.auth({ type: 'reset' });
+              Actions.login(); 
+            }}
             initial
+          />
+          <Scene
+            key="productPage"
+            component={ProductPage}
+            title="Products"
+            titleStyle={{ alignSelf: 'center' }}
           />
         </Scene>
     </Router>

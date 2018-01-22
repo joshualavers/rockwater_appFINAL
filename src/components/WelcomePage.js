@@ -1,20 +1,36 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
+import { RaisedTextButton } from 'react-native-material-buttons';
+import { Actions } from 'react-native-router-flux';
 import { Card } from './common';
 import { userFetch } from '../actions';
 
+
 class WelcomePage extends Component {
-  componentWillMount() {
-    this.props.userFetch();
+  async componentWillMount() {
+    await this.props.userFetch();
   }
 
   render() {
-    console.log(this.props);
+    console.log('THIS.PROPS: ', this.props);
+    for (var i in this.props.Products) {
+    console.log(this.props.Products.i.Name);
+    }
+
     return (
       <Card style={styles.cardStyle}>
-          <Text style={styles.textStyle}>Welcome!</Text>
+          <Image
+          source={require('../images/puffin.png')}
+          />
+          <Text style={styles.textStyle}>Welcome back,</Text>
+          <Text style={styles.textStyle}>{this.props.user}</Text>
+          <RaisedTextButton
+          title='Place Order'
+          color='#66ff99'
+          style={{ marginTop: 100 }}
+          onPress={() => { Actions.core({ type: 'reset' }); Actions.productPage(); }}
+          />
       </Card>
     );
   }
@@ -26,17 +42,15 @@ const styles = {
     color: '#000'
   },
   cardStyle: {
-    paddingTop: 333,
+    paddingTop: 250,
     alignItems: 'center',
     justifyContent: 'center'
   }
 };
 
 const mapStateToProps = state => {
-  const users = _.map(state.users, (val, uid) => {
-    return { ...val, uid };
-  });
-  return { users };
+  const { users } = state;
+  return { user: users.Name, Products: users.Products };
 };
 
 export default connect(mapStateToProps, { userFetch })(WelcomePage);

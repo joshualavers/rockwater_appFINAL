@@ -48,16 +48,16 @@ class LoginForm extends Component {
     return (
       <View style={styles.containerStyle}>
         <ImageBackground
-          source={require('../images/capespearapp(purp).jpg')}
+          source={require('../images/moosewithoverlay.jpg')}
           style={styles.backgroundImage}
         >
-        <View style={{ flex: 0.8, marginTop: 25 }}>
+        <View style={{ flex: 0.6, marginTop: 25 }}>
           <Image
             source={require('../images/rockwaterlogotransparent(275x46).png')}
             style={styles.rockwaterLogoStyle}
           />
         </View>
-          <Card style={{ flex: 0.2, marginBottom: 100 }}>
+          <Card style={{ flex: 0.4, marginBottom: 525 }}>
             <CardSection style={styles.inputStyle}>
               <Input
                 label="Email"

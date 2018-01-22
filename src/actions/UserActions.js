@@ -7,8 +7,9 @@ export const userFetch = () => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/`)
+    firebase.database().ref(`/users/${currentUser.uid}`)
       .on('value', snapshot => {
+        console.log('snapshot: ', snapshot);
         dispatch({ type: USER_FETCH_SUCCESS, payload: snapshot.val() });
       });
   };
