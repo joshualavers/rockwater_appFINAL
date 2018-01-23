@@ -14,10 +14,8 @@ class WelcomePage extends Component {
 
   render() {
     console.log('THIS.PROPS: ', this.props);
-    for (var i in this.props.Products) {
-    console.log(this.props.Products.i.Name);
-    }
-
+    console.log('PRODUCT NAME: ', this.props.ProductName);
+    
     return (
       <Card style={styles.cardStyle}>
           <Image
@@ -50,7 +48,7 @@ const styles = {
 
 const mapStateToProps = state => {
   const { users } = state;
-  return { user: users.Name, Products: users.Products };
+  return { user: users.Name, Products: users.Products, ProductName: users.ProductName };
 };
 
 export default connect(mapStateToProps, { userFetch })(WelcomePage);

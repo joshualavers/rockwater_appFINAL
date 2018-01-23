@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 
 class ProductPage extends Component {
 
   render() {
-    console.log('THIS.PROPS: ', this.props);
+    console.log('THIS.PROPS(ProductPage): ', this.props);
+    console.log('PRODUCT NAME: ', this.props.ProductName);
     return (
       <View>
         <Text>Product Page</Text>
@@ -13,4 +15,8 @@ class ProductPage extends Component {
   }
 }
 
-export default ProductPage;
+const mapStateToProps = state => {
+  const { users } = state;
+  return { ProductName: users.ProductName };
+};
+export default connect(mapStateToProps, {})(ProductPage);
