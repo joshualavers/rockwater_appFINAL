@@ -4,18 +4,19 @@ import { Text, Image } from 'react-native';
 import { RaisedTextButton } from 'react-native-material-buttons';
 import { Actions } from 'react-native-router-flux';
 import { Card } from './common';
-import { userFetch } from '../actions';
+import { userFetch, productFetch } from '../actions';
 
 
 class WelcomePage extends Component {
   async componentWillMount() {
     await this.props.userFetch();
+    await this.props.productFetch();
   }
 
   render() {
     console.log('THIS.PROPS: ', this.props);
     console.log('PRODUCT NAME: ', this.props.ProductName);
-    
+
     return (
       <Card style={styles.cardStyle}>
           <Image
@@ -48,7 +49,7 @@ const styles = {
 
 const mapStateToProps = state => {
   const { users } = state;
-  return { user: users.Name, Products: users.Products, ProductName: users.ProductName };
+  return { user: users.Name, ProductName: users.ProductName };
 };
 
-export default connect(mapStateToProps, { userFetch })(WelcomePage);
+export default connect(mapStateToProps, { userFetch, productFetch })(WelcomePage);
