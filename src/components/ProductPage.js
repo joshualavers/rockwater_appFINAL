@@ -28,6 +28,7 @@ class ProductPage extends Component {
   render() {
     console.log('THIS.PROPS(ProductPage): ', this.props);
     console.log('PRODUCT NAME: ', this.props.ProductName);
+    console.log('NAME: ', this.props.Name);
     return (
       <View style={{ flex: 1, paddingTop: 80 }}>
 				{/* quick test, your text was rendered under the header*/}

@@ -13,16 +13,23 @@ export const userFetch = () => {
         console.log('snapshot: ', snapshot);
         dispatch({ type: USER_FETCH_SUCCESS, payload: snapshot.val() });
       });
+  };
+};
 
-    firebase.database().ref(`/users/${currentUser.uid}/Products`)
-      .on('value', snapshot => {
-        snapshot.forEach(productSnapshot => {
-          const productKey = productSnapshot.key;
-          const productName = productSnapshot.child('ProductName');
-          console.log(productKey);
-          console.log(productName.val());
-          dispatch({ type: PRODUCT_FETCH_SUCCESS, payload: productSnapshot.val() });
-        });
+export const productFetch = () => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+  firebase.database().ref(`/users/${currentUser.uid}/Products`)
+    .on('value', snapshot => {
+      snapshot.forEach(productSnapshot => {
+        const productKey = productSnapshot.key;
+        const productName = productSnapshot.child('ProductName');
+        console.log(productKey);
+        console.log(productName.val());
+        console.log(productSnapshot.val());
+        dispatch({ type: PRODUCT_FETCH_SUCCESS, payload: productSnapshot.val() });
       });
+    });
   };
 };
