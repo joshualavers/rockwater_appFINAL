@@ -6,4 +6,7 @@ export const LOGIN_USER = 'login_user';
 export const LOGOUT_USER = 'logout_user';
 
 export const USER_FETCH_SUCCESS = 'user_fetch_success';
+
 export const PRODUCT_FETCH_SUCCESS = 'product_fetch_success';
+
+export const VALUE_CHANGED = 'value_changed';
