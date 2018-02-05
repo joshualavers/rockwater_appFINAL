@@ -20,16 +20,26 @@ export const productFetch = () => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
+    const newArr = [];
   firebase.database().ref(`/users/${currentUser.uid}/Products`)
     .on('value', snapshot => {
+      console.log('snapshot: ', snapshot);
       snapshot.forEach(productSnapshot => {
+        console.log('productSnapshot: ', productSnapshot);
         const productKey = productSnapshot.key;
         const productName = productSnapshot.child('ProductName');
+        const newObj = {
+          key: productKey,
+          name: productName.val(),
+          value: 0,
+        };
+        newArr.push(newObj);
         console.log(productKey);
         console.log(productName.val());
         console.log(productSnapshot.val());
-        dispatch({ type: PRODUCT_FETCH_SUCCESS, payload: productSnapshot.val() });
       });
+      console.log('newArr before dispatch: ', newArr);
+      dispatch({ type: PRODUCT_FETCH_SUCCESS, payload: newArr });
     });
   };
 };
