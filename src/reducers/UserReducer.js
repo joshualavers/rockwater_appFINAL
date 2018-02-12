@@ -1,6 +1,5 @@
 import {
-  USER_FETCH_SUCCESS,
-  PRODUCT_FETCH_SUCCESS
+  USER_FETCH_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {};

@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FlatList, View, Text } from 'react-native';
@@ -112,13 +111,14 @@ class ProductPage extends Component {
 						);
 					}}
 				/>
-        <Button title="ordaaa" onPress={() => alert(`You ordered ${this.props.products[0].value} Glass Cleaner`)} />
+        <Button
+				title="ordaaa"
+				onPress={() => alert(`You ordered ${this.props.products[0].value} Glass Cleaner`)} />
       </View>
     );
   }
 }
 
-<<<<<<< HEAD
 const mapStateToProps = (state) => {
   const { products } = state.products;
   const { users } = state;
@@ -132,10 +132,5 @@ const mapStateToProps = (state) => {
     province: users.Province,
     streetaddress: users.StreetAddress
   };
-=======
-const mapStateToProps = state => {
-  const { products } = state.products;
-  return { products };
->>>>>>> parent of 68c8ba5... attempted Clickable ListItem
 };
 export default connect(mapStateToProps, { valueChanged })(ProductPage);
