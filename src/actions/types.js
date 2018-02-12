@@ -10,3 +10,4 @@ export const USER_FETCH_SUCCESS = 'user_fetch_success';
 export const PRODUCT_FETCH_SUCCESS = 'product_fetch_success';
 
 export const VALUE_CHANGED = 'value_changed';
+export const SELECT_PRODUCT = 'select_product';

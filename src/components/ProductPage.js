@@ -118,8 +118,24 @@ class ProductPage extends Component {
   }
 }
 
+<<<<<<< HEAD
+const mapStateToProps = (state) => {
+  const { products } = state.products;
+  const { users } = state;
+  const expanded = state.selectedProductId === products.id;
+  return {
+    products,
+    expanded,
+    email: users.Email,
+    city: users.City,
+    postalcode: users.PostalCode,
+    province: users.Province,
+    streetaddress: users.StreetAddress
+  };
+=======
 const mapStateToProps = state => {
   const { products } = state.products;
   return { products };
+>>>>>>> parent of 68c8ba5... attempted Clickable ListItem
 };
 export default connect(mapStateToProps, { valueChanged })(ProductPage);

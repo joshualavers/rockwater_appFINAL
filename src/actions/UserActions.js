@@ -28,10 +28,14 @@ export const productFetch = () => {
         console.log('productSnapshot: ', productSnapshot);
         const productKey = productSnapshot.key;
         const productName = productSnapshot.child('ProductName');
+        const imageURL = productSnapshot.child('imageURL');
+        const id = productSnapshot.child('id');
         const newObj = {
           key: productKey,
           name: productName.val(),
-          value: 0,
+          imageURL: imageURL.val(),
+          id: id.val(),
+          value: 0
         };
         newArr.push(newObj);
         console.log(productKey);
